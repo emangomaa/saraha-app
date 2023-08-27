@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./dist/App.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import RegisterForm from "./components/RegisterForm";
+import LoginForm from "./components/LoginForm";
+import SendMessage from "./components/SendMessage";
+import ProfilePage from "./components/ProfilePage";
+import Settings from "./components/Settings";
+import LogOut from "./components/LogOut";
+import Home from "./components/Home";
+import Verify from "./components/Verify";
 
-function App() {
+export default function App() {
+  let [user, setUser] = useState({});
+  let [flag, setFlag] = useState(Number(localStorage.getItem("flag")));
+  const updateUser = (user) => {
+    setUser((prev) => ({ ...prev, ...user }));
+  };
+  const toggleFlag = () => {
+    setFlag(Number(localStorage.getItem("flag")));
+  };
+  // if (typeof chrome.app.isInstalled !== "undefined") {
+  //   chrome.runtime.sendMessage();
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar flag={flag} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sendMessage/:id" element={<SendMessage />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/verify" element={<Verify />} />
+        <Route path="/login" element={<LoginForm updateFlag={toggleFlag} />} />
+        <Route
+          path="/profile"
+          element={<ProfilePage updateUser={updateUser} />}
+        />
+        <Route path="/settings" element={<Settings />} />
+        <Route
+          path="/logOut"
+          element={<LogOut user={user} updateFlag={toggleFlag} />}
+        />
+      </Routes>
+      <Footer />
+    </>
   );
 }
-
-export default App;

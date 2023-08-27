@@ -1,0 +1,171 @@
+$main-color:#3399A3;
+$border-color: #c9c9c9b4;
+$border:1px solid $border-color;
+$padding-space:8px;
+
+// base display
+%display-flex-column{
+    display: flex;
+    flex-direction: column;
+}
+%button{
+                align-self: center;
+                color: $main-color;
+                font-weight: bold;
+                border: $border;
+                border-radius: 25px;
+                background-color: white;
+                padding: $padding-space;
+                width: 200px;
+                &:hover{
+                    color: white;
+                    background-color: $main-color;
+                }
+            }
+// navbar style
+nav{
+    height: 10vh;
+    img{
+        width: 40px;
+        height: 40px;
+    }
+}
+// change in bootstrap style
+.navbar.bg-body-tertiary{
+    background-color: $main-color !important;
+}
+
+// home page style
+.homePage{
+       height:75vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+.content{
+    @extend %display-flex-column;
+    gap:16px;
+    h1{
+        font-size: 44px;
+        font-weight: bold;
+    }
+    h3{
+        font-size: 24px;
+    }
+    button{
+    @extend %button;
+    align-self: flex-start;
+}
+}
+}
+
+// @media (max-width:767px) {
+//     .content{
+//     h1{
+//         font-size: 28px;
+//         font-weight: bold;
+//     }
+//     h3{
+//         font-size: 24px;
+//     }
+// }
+// }
+// form style
+.form{
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    height:75vh;
+        form {
+        @extend %display-flex-column;
+        gap: 16px;
+        width: 400px;
+        height:fit-content;
+        padding: 24px;
+        border: $border;
+        box-shadow: 5px 5px 10px -2px #ccc,-5px -5px 10px -2px #ccc ;
+        
+            input{
+                padding: $padding-space;
+                border: $border;
+                outline: none;
+                &:focus{
+                    border: none;
+                    outline: 2px solid $main-color;
+                }
+            }
+            button{
+                @extend %button;
+            }
+    }
+}
+// verify style 
+.verify{
+     @extend %display-flex-column;
+     align-items: center;
+}
+// profile page styles
+.profile{
+        @extend %display-flex-column;
+
+    align-items: center;
+    margin-top: 100px;
+    gap: 16px;
+    .user{
+        font-size: 88px;
+        color: $main-color;
+    }
+textarea{
+width: 400px
+}
+button{
+    @extend %button;
+}
+ .messageList{
+        @extend %display-flex-column;
+
+    .message{
+    list-style: none;
+    padding: 16px;
+    border: $border;
+    width: 600px;
+}
+}
+}
+
+// Log Out Style
+.logOut{
+   @extend %display-flex-column;
+   align-items: center;
+    width: 500px;
+    margin: 100px auto;
+gap: 24px;
+    .user{
+        font-size: 88px;
+        color: $main-color;
+    }
+
+    button{
+        @extend %button;
+    }
+}
+// footer style
+.footer{
+        @extend %display-flex-column;
+align-items: center;
+    height: 15vh;
+    background-color: $main-color;
+position: fixed;
+bottom: 0;
+.icon{
+    color: #013a40;
+    &:hover{
+        color: white;
+    }
+}
+}
+
+
+
+
+

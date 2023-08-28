@@ -19,7 +19,7 @@ export default function ProfilePage({ updateUser }) {
           handleUser(res.user);
         }
       });
-  }, []);
+  });
   const handleUrl = () => {
     setUrl(`http://localhost:3001/sendMessage/${user._id}`);
   };

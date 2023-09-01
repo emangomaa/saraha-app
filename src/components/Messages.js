@@ -13,7 +13,6 @@ export default function Messages() {
       .then((response) => response.json())
       .then((res) => {
         if (res.message === "success") {
-          console.log(res.messages);
           setMessages(res.messages);
         }
       });

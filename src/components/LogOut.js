@@ -2,6 +2,7 @@ import React from "react";
 import { BiLogOut } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import secureLocalStorage from "react-secure-storage";
 export default function LogOut({ user, updateFlag }) {
   let navigate = useNavigate();
   const logOut = () => {
@@ -15,7 +16,7 @@ export default function LogOut({ user, updateFlag }) {
       .then((response) => response.json())
       .then((res) => {
         if (res.message === "success") {
-          localStorage.setItem("flag", res.flag);
+          secureLocalStorage.setItem("flag", res.flag);
           updateFlag();
           navigate("/login");
         }

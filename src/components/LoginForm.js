@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import secureLocalStorage from "react-secure-storage";
 export default function LoginForm({ updateFlag }) {
   let navigate = useNavigate();
   let [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ export default function LoginForm({ updateFlag }) {
       .then((res) => {
         if (res.message === "success") {
           localStorage.setItem("token", res.token);
-          localStorage.setItem("flag", res.flag);
+          secureLocalStorage.setItem("flag", res.flag);
           updateFlag();
           navigate("/profile");
         }

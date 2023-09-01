@@ -11,15 +11,16 @@ import Settings from "./components/Settings";
 import LogOut from "./components/LogOut";
 import Home from "./components/Home";
 import Verify from "./components/Verify";
+import secureLocalStorage from "react-secure-storage";
 
 export default function App() {
   let [user, setUser] = useState({});
-  let [flag, setFlag] = useState(Number(localStorage.getItem("flag")));
+  let [flag, setFlag] = useState(Number(secureLocalStorage.getItem("flag")));
   const updateUser = (user) => {
     setUser((prev) => ({ ...prev, ...user }));
   };
   const toggleFlag = () => {
-    setFlag(Number(localStorage.getItem("flag")));
+    setFlag(Number(secureLocalStorage.getItem("flag")));
   };
   // if (typeof chrome.app.isInstalled !== "undefined") {
   //   chrome.runtime.sendMessage();

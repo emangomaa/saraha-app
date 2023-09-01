@@ -50,6 +50,23 @@ nav img {
   align-self: flex-start;
 }
 
+@media (max-width: 767px) {
+  .homePage .content h1 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  .homePage .content h3 {
+    font-size: 18px;
+  }
+  .homePage .content p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .homePage img {
+    display: none;
+  }
+}
 .form {
   display: flex;
   align-items: center;
@@ -74,6 +91,16 @@ nav img {
   border: none;
   outline: 2px solid #3399A3;
 }
+@media (max-width: 767px) {
+  .form .lottie-player {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+  .form form {
+    width: 250px;
+  }
+}
 .verify {
   align-items: center;
 }
@@ -97,6 +124,12 @@ nav img {
   width: 600px;
 }
 
+@media (max-width: 767px) {
+  .profile .messageList .message {
+    width: 400px;
+    font-size: 12px;
+  }
+}
 .logOut {
   align-items: center;
   width: 500px;
@@ -119,4 +152,10 @@ nav img {
 }
 .footer .icon:hover {
   color: white;
+}
+
+@media (max-width: 400px) {
+  .footer {
+    font-size: 12px;
+  }
 }

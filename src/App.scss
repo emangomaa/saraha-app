@@ -58,17 +58,31 @@ nav{
 }
 }
 
-// @media (max-width:767px) {
-//     .content{
-//     h1{
-//         font-size: 28px;
-//         font-weight: bold;
-//     }
-//     h3{
-//         font-size: 24px;
-//     }
-// }
-// }
+
+
+@media (max-width:767px) {
+    .homePage{
+.content{
+    h1{
+        font-size: 28px;
+        font-weight: bold;
+    }
+    h3{
+        font-size: 18px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+    }
+}
+@media (max-width:500px) {
+    .homePage{
+        img{
+            display: none;
+        }
+    }
+}
 // form style
 .form{
      display: flex;
@@ -97,6 +111,22 @@ nav{
             button{
                 @extend %button;
             }
+    }
+}
+@media (max-width:767px) {
+    .form{
+        .lottie-player{
+            display: none;
+        }
+       
+    }
+}
+@media (max-width:400px) {
+    .form{
+        form{
+            width: 250px
+        }
+       
     }
 }
 // verify style 
@@ -132,7 +162,16 @@ button{
 }
 }
 }
-
+@media (max-width:767px) {
+    .profile{
+        .messageList{
+            .message{
+                width: 400px;
+                font-size: 12px
+            }
+        }
+    }
+}
 // Log Out Style
 .logOut{
    @extend %display-flex-column;
@@ -155,7 +194,7 @@ gap: 24px;
 align-items: center;
     height: 15vh;
     background-color: $main-color;
-position: fixed;
+    position: fixed;
 bottom: 0;
 .icon{
     color: #013a40;
@@ -163,6 +202,12 @@ bottom: 0;
         color: white;
     }
 }
+}
+
+@media (max-width:400px) {
+    .footer{
+        font-size: 12px;
+    }
 }
 
 

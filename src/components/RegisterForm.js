@@ -1,12 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import validation from "../validation";
 export default function RegisterForm() {
   let navigate = useNavigate();
-  let [name, setName] = useState("");
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [age, setAge] = useState("");
+  let [inputValues, setInputValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    age: "",
+  });
+  let [errors, setErrors] = useState({});
   let postData = (user) => {
     fetch("http://localhost:3000/api/v1/users/signUp", {
       method: "POST",
@@ -20,22 +24,20 @@ export default function RegisterForm() {
         }
       });
   };
+
+  const handleInput = (e) => {
+    let newObj = { ...inputValues, [e.target.name]: e.target.value };
+    setInputValues(newObj);
+  };
   const resetInput = () => {
-    setName("");
-    setEmail("");
-    setPassword("");
-    setAge("");
+    setInputValues({ name: "", email: "", password: "", age: "" });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    let user = {
-      name,
-      email,
-      password,
-      age,
-    };
-    // call server ----> send data
-    postData(user);
+    // validation
+    setErrors(validation(inputValues));
+    // post data to server
+    postData(inputValues);
     resetInput();
   };
 
@@ -46,30 +48,35 @@ export default function RegisterForm() {
         <input
           type="text"
           placeholder="Full Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={inputValues.name}
+          name="name"
+          onChange={handleInput}
         />
+        {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
         <input
           type="text"
           placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={inputValues.email}
+          name="email"
+          onChange={handleInput}
         />
         <input
           type="text"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={inputValues.password}
+          name="password"
+          onChange={handleInput}
         />
         <input
           type="text"
           placeholder="Age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          value={inputValues.age}
+          name="age"
+          onChange={handleInput}
         />
         <button>Register</button>
       </form>
-      <div>
+      <div className="lottie-player">
         <lottie-player
           src="https://lottie.host/a01e6750-461b-4b4a-8d1e-a0600638560b/N3nQuro5zb.json"
           background="#FFFFFF"

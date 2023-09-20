@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { BiShareAlt } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import Messages from "./Messages";
-export default function ProfilePage({ updateUser }) {
+export default function ProfilePage() {
   let [url, setUrl] = useState("");
   let [user, setUser] = useState({});
   useEffect(() => {
@@ -19,13 +19,13 @@ export default function ProfilePage({ updateUser }) {
           handleUser(res.user);
         }
       });
-  });
+  }, []);
   const handleUrl = () => {
     setUrl(`http://localhost:3001/sendMessage/${user._id}`);
   };
   const handleUser = (user) => {
     setUser((prev) => ({ ...prev, ...user }));
-    updateUser(user);
+    // updateUser(user);
   };
   return (
     <div className="profile">

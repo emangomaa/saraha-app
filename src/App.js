@@ -14,11 +14,11 @@ import Verify from "./components/Verify";
 import secureLocalStorage from "react-secure-storage";
 
 export default function App() {
-  let [user, setUser] = useState({});
+  // let [user, setUser] = useState({});
   let [flag, setFlag] = useState(Number(secureLocalStorage.getItem("flag")));
-  const updateUser = (user) => {
-    setUser((prev) => ({ ...prev, ...user }));
-  };
+  // const updateUser = (user) => {
+  //   setUser((prev) => ({ ...prev, ...user }));
+  // };
   const toggleFlag = () => {
     setFlag(Number(secureLocalStorage.getItem("flag")));
   };
@@ -34,15 +34,9 @@ export default function App() {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/login" element={<LoginForm updateFlag={toggleFlag} />} />
-        <Route
-          path="/profile"
-          element={<ProfilePage updateUser={updateUser} />}
-        />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<Settings />} />
-        <Route
-          path="/logOut"
-          element={<LogOut user={user} updateFlag={toggleFlag} />}
-        />
+        <Route path="/logOut" element={<LogOut updateFlag={toggleFlag} />} />
       </Routes>
       <Footer />
     </>

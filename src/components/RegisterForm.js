@@ -21,6 +21,7 @@ export default function RegisterForm() {
       .then((res) => {
         if (res.message === "success") {
           navigate("/login");
+          resetInput();
         }
       });
   };
@@ -38,7 +39,6 @@ export default function RegisterForm() {
     setErrors(validation(inputValues));
     // post data to server
     postData(inputValues);
-    resetInput();
   };
 
   return (
@@ -60,6 +60,7 @@ export default function RegisterForm() {
           name="email"
           onChange={handleInput}
         />
+        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         <input
           type="text"
           placeholder="Password"
@@ -67,6 +68,7 @@ export default function RegisterForm() {
           name="password"
           onChange={handleInput}
         />
+        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         <input
           type="text"
           placeholder="Age"
@@ -74,6 +76,7 @@ export default function RegisterForm() {
           name="age"
           onChange={handleInput}
         />
+        {errors.age && <p style={{ color: "red" }}>{errors.age}</p>}
         <button>Register</button>
       </form>
       <div className="lottie-player">
